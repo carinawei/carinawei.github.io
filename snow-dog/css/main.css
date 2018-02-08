@@ -1,0 +1,197 @@
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+#snow-dog {
+  margin: 40px auto;
+  max-width: 500px;
+  text-align: center;
+}
+
+.ball {
+  position: relative;
+  display: inline-block;
+  width: 340px;
+  height: 340px;
+  border: 2px solid #ccc;
+  border-radius: 50%;
+  text-align: center;
+}
+
+.lampstand {
+  display: inline-block;
+  position: relative;
+  top: -40px;
+  width: 450px;
+  height: 150px;
+  border-radius: 25%;
+  background: #f00;
+  background: linear-gradient(135deg, #fff 80px, #ff4343 0) left, linear-gradient(-135deg, #fff 80px, #ff4343 0) right;
+  background-size: 52% 100%;
+  background-repeat: no-repeat;
+}
+
+.dog {
+  position: absolute;
+  left: 50%;
+  bottom: 30px;
+  transform: translateX(-50%);
+}
+
+.dog .head {
+  position: relative;
+  display: inline-block;
+  width: 70px;
+  height: 75px;
+  border-radius: 35%;
+  background-color: #07091f;
+}
+
+
+.dog .head .ear {
+  position: absolute;
+  top: -4px;
+  display: inline-block;
+  width: 15px;
+  height: 35px;
+  border-radius: 50%;
+  background-color: #282b41;
+}
+
+.dog .head .ear.left {
+  left: 2px;
+  transform-origin: 0 0;
+  transform: rotate(25deg);
+}
+
+.dog .head .ear.right {
+  right: 2px;
+  transform-origin: 20px 0;
+  transform: rotate(-25deg);
+}
+
+.dog .head .eye {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  margin: 10px 2px;
+  background-color: #fff;
+}
+
+.dog .head .eye::before {
+  display: inline-block;
+  content: '';
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background-color: #000;
+}
+
+.dog .head .rhynchodaenm {
+  display: inline-block;
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  background-color: #282b41;
+}
+
+.dog .head .nose-mouth {
+  position: relative;
+  display: inline-block;
+  width: 26px;
+  height: 24px;
+  border-radius: 50%;
+  margin-top: 5px;
+  background-color: #000;
+  background: linear-gradient(50deg, transparent 50%, #000 0) left top,
+              linear-gradient(-50deg, transparent 50%, #000 0) right top,
+              linear-gradient(90deg, transparent 90%, #000 0) left bottom,
+              radial-gradient(at right top, transparent 60%, #000 0) left bottom,
+              linear-gradient(-90deg, transparent 90%, #000 0) right bottom,
+              radial-gradient(at left top, transparent 60%, #000 0) right bottom;
+  background-size: 52%;
+  background-repeat: no-repeat;
+}
+
+.dog .upper-body {
+  width: 100px;
+  height: 150px;
+  border-radius: 50% 50% 0 0;
+  margin-top: -20px;
+  background-color: #07091f;
+}
+
+.dog .upper-body .hand {
+  position: relative;
+  display: inline-block;
+  width: 30px;
+  height: 100%;
+  margin: 0 5px;
+  border-radius: 50% 50% 0 0;
+  background: linear-gradient(transparent 30%, #07091f 35%, #282b41);
+  background-repeat: no-repeat;
+  z-index: 1;
+}
+
+.dog .upper-body .fingers::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  display: block;
+  width: 100%;
+  height: 15px;
+  background: radial-gradient(#07091f 55%, #282b41 60%, transparent 70%);
+  background-size: 33.4% 100%;
+}
+
+.dog .upper-body .leg {
+  position: absolute;
+  bottom: 0;
+  display: inline-block;
+  width: 50px;
+  height: 70px;
+  border-radius: 50% 50% 0 0;
+  background: linear-gradient(#282b41, #07091f);
+}
+
+.dog .upper-body .leg.fingers::before {
+  background-size: 25% 100%;
+}
+
+.dog .upper-body .leg.left {
+  left: -10%;
+}
+
+.dog .upper-body .leg.right {
+  right: -10%;
+}
+
+.dog .upper-body .tail {
+  position: absolute;
+  left: 50%;
+  bottom: 10px;
+  display: inline-block;
+  width: 10px;
+  height: 150px;
+  border-radius: 50%;
+  background-color: #07091f;
+  z-index: -1;
+  transform: rotate(30deg);
+  transform-origin: 50% 100%;
+  animation: .5s wag-tail infinite;
+}
+
+@keyframes wag-tail {
+  0% {
+    transform: rotate(30deg);
+  }
+
+  50% {
+    transform: rotate(60deg);
+  }
+
+  100% {
+    transform: rotate(30deg);
+  }
+}
