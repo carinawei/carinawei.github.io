@@ -3,30 +3,27 @@
 }
 
 #snow-dog {
-  margin: 40px auto;
-  max-width: 500px;
-  text-align: center;
-}
-
-.ball {
   position: relative;
-  display: inline-block;
   width: 340px;
   height: 340px;
   border: 2px solid #ccc;
   border-radius: 50%;
+  margin: 40px auto;
   text-align: center;
 }
 
-.lampstand {
-  display: inline-block;
-  position: relative;
-  top: -40px;
-  width: 450px;
-  height: 150px;
-  border-radius: 25%;
+#snow-dog::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  bottom: 30px;
+  transform: translate(-50%, 100%);
+  width: 300px;
+  height: 70px;
+  border-radius: 30%;
   background: #f00;
-  background: linear-gradient(135deg, #fff 80px, #ff4343 0) left, linear-gradient(-135deg, #fff 80px, #ff4343 0) right;
+  background: linear-gradient(135deg, #fff 35px, #ff4343 0) left,
+              linear-gradient(-135deg, #fff 35px, #ff4343 0) right;
   background-size: 52% 100%;
   background-repeat: no-repeat;
 }
@@ -35,23 +32,28 @@
   position: absolute;
   left: 50%;
   bottom: 30px;
+  width: 100px;
+  height: 150px;
+  border-radius: 50% 50% 0 0;
+  margin-top: -20px;
+  background-color: #07091f;
   transform: translateX(-50%);
 }
 
 .dog .head {
-  position: relative;
-  display: inline-block;
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translate(-50%, -75%);
   width: 70px;
   height: 75px;
   border-radius: 35%;
   background-color: #07091f;
 }
 
-
 .dog .head .ear {
   position: absolute;
   top: -4px;
-  display: inline-block;
   width: 15px;
   height: 35px;
   border-radius: 50%;
@@ -71,73 +73,163 @@
 }
 
 .dog .head .eye {
-  display: inline-block;
+  position: absolute;
+  top: 10px;
   width: 20px;
   height: 20px;
   border-radius: 50%;
-  margin: 10px 2px;
   background-color: #fff;
 }
 
 .dog .head .eye::before {
-  display: inline-block;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   content: '';
-  width: 5px;
-  height: 5px;
+  width: 8px;
+  height: 8px;
   border-radius: 50%;
-  background-color: #000;
+  background: #000;
+  background-size: cover;
+  animation: 10s nictation infinite;
+}
+
+@keyframes nictation {
+  0% {
+    top: 50%;
+    left: 50%;
+  }
+
+  25% {
+    top: 50%;
+    left: 100%;
+  }
+
+  50% {
+    top: 50%;
+    left: 0;
+  }
+
+  75% {
+    top: 0;
+    left: 50%;
+  }
+
+  90% {
+    top: 100%;
+    left: 50%;
+  }
+
+  100% {
+    top: 50%;
+    left: 50%;
+  }
+}
+
+.dog .head .eye.left {
+  left: 18%;
+}
+
+.dog .head .eye.right {
+  right: 18%;
 }
 
 .dog .head .rhynchodaenm {
-  display: inline-block;
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
   width: 35px;
   height: 35px;
   border-radius: 50%;
   background-color: #282b41;
 }
 
-.dog .head .nose-mouth {
-  position: relative;
-  display: inline-block;
-  width: 26px;
-  height: 24px;
+.dog .head .nose {
+  width: 0;
+  height: 0;
+  border-top: 12px solid #000;
+  border-left: 12px solid transparent;
+  border-right: 12px solid transparent;
   border-radius: 50%;
-  margin-top: 5px;
+  margin: 6px auto 0;
+}
+
+.dog .head .beard {
+  width: 1px;
+  height: 12px;
+  margin: -3px auto 0;
   background-color: #000;
-  background: linear-gradient(50deg, transparent 50%, #000 0) left top,
-              linear-gradient(-50deg, transparent 50%, #000 0) right top,
-              linear-gradient(90deg, transparent 90%, #000 0) left bottom,
-              radial-gradient(at right top, transparent 60%, #000 0) left bottom,
-              linear-gradient(-90deg, transparent 90%, #000 0) right bottom,
-              radial-gradient(at left top, transparent 60%, #000 0) right bottom;
-  background-size: 52%;
-  background-repeat: no-repeat;
 }
 
-.dog .upper-body {
-  width: 100px;
-  height: 150px;
-  border-radius: 50% 50% 0 0;
-  margin-top: -20px;
-  background-color: #07091f;
+.dog .head .mouth {
+  width: 25px;
+  height: 20px;
+  border-bottom: 2px solid #000;
+  border-bottom-left-radius: 100%;
+  border-bottom-right-radius: 100%;
+  margin: -18px auto 0;
 }
 
-.dog .upper-body .hand {
-  position: relative;
-  display: inline-block;
-  width: 30px;
-  height: 100%;
-  margin: 0 5px;
-  border-radius: 50% 50% 0 0;
-  background: linear-gradient(transparent 30%, #07091f 35%, #282b41);
-  background-repeat: no-repeat;
-  z-index: 1;
-}
-
-.dog .upper-body .fingers::before {
-  content: '';
+.dog .hand {
   position: absolute;
   bottom: 0;
+  width: 30px;
+  height: 100px;
+  margin: 0 5px;
+  border-radius: 50% 50% 0 0;
+  background: linear-gradient(#07091f, #282b41);
+  background-repeat: no-repeat;
+  z-index: 1;
+  animation: .5s beckon infinite;
+}
+
+.dog .hand.left {
+  left: 8%;
+}
+
+.dog .hand.right {
+  right: 8%;
+  animation-delay: .25s;
+}
+
+@keyframes beckon {
+  0% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-10px);
+  }
+
+  100% {
+    transform: translateY(0);
+  }
+}
+
+.dog .leg {
+  position: absolute;
+  bottom: 0;
+  width: 30px;
+  height: 70px;
+  border-radius: 50% 50% 0 0;
+  background: linear-gradient(#282b41, #07091f);
+}
+
+.dog .leg.left {
+  left: -10%;
+}
+
+.dog .leg.right {
+  right: -10%;
+}
+
+.dog .hand::before,
+.dog .leg::before {
+  content: '';
+  position: absolute;
+  bottom: -2px;
   display: block;
   width: 100%;
   height: 15px;
@@ -145,33 +237,10 @@
   background-size: 33.4% 100%;
 }
 
-.dog .upper-body .leg {
-  position: absolute;
-  bottom: 0;
-  display: inline-block;
-  width: 50px;
-  height: 70px;
-  border-radius: 50% 50% 0 0;
-  background: linear-gradient(#282b41, #07091f);
-}
-
-.dog .upper-body .leg.fingers::before {
-  background-size: 25% 100%;
-}
-
-.dog .upper-body .leg.left {
-  left: -10%;
-}
-
-.dog .upper-body .leg.right {
-  right: -10%;
-}
-
-.dog .upper-body .tail {
+.dog .tail {
   position: absolute;
   left: 50%;
   bottom: 10px;
-  display: inline-block;
   width: 10px;
   height: 150px;
   border-radius: 50%;
@@ -193,5 +262,59 @@
 
   100% {
     transform: rotate(30deg);
+  }
+}
+
+.snowflake-base {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.snowflake {
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  animation: 30s snow infinite;
+}
+
+.snowflake:nth-child(1) {
+  left: 13%;
+  animation-delay: 1.8s;
+}
+
+.snowflake:nth-child(2) {
+  left: 28%;
+  animation-delay: 1s;
+}
+
+.snowflake:nth-child(3) {
+  left: 46%;
+  z-index: -.8s;
+}
+
+.snowflake:nth-child(4) {
+  left: 55%;
+  animation-delay: 1s;
+  z-index: -1;
+}
+
+.snowflake:nth-child(5) {
+  left: 76%;
+  animation-delay: .5s;
+  z-index: -1;
+}
+
+@keyframes snow {
+  0% {
+    top: -10%;
+    transform: rotate(0deg);
+  }
+
+  100% {
+    top: 90%;
+    transform: rotate(1080deg);
   }
 }
